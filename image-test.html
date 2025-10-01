@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .image-section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            position: relative;
+        }
+        .image-container img {
+            max-width: 300px;
+            border: 1px solid #ddd;
+        }
+        .image-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Test Page</h1>
+    <p>This page displays all the images in the website to verify they're loading correctly.</p>
+
+    <div class="image-section">
+        <h2>Racing Images</h2>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="images/racing1.jpg" alt="Racing Photo 1">
+                <div class="image-label">racing1.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/racing2.jpg" alt="Racing Photo 2">
+                <div class="image-label">racing2.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/racing3.jpg" alt="Racing Photo 3">
+                <div class="image-label">racing3.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/racing4.jpg" alt="Racing Photo 4">
+                <div class="image-label">racing4.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/racing5.jpg" alt="Racing Photo 5">
+                <div class="image-label">racing5.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/racing6.jpg" alt="Racing Photo 6">
+                <div class="image-label">racing6.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-section">
+        <h2>Background Images</h2>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="images/background1.jpg" alt="Background 1">
+                <div class="image-label">background1.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/background2.jpg" alt="Background 2">
+                <div class="image-label">background2.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-section">
+        <h2>Helmet Images</h2>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="images/helmet1.jpg" alt="Helmet 1">
+                <div class="image-label">helmet1.jpg</div>
+            </div>
+            <div class="image-container">
+                <img src="images/helmet2.jpg" alt="Helmet 2">
+                <div class="image-label">helmet2.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-section">
+        <h2>Driver Image</h2>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="images/driver1.jpg" alt="Driver 1">
+                <div class="image-label">driver1.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-section">
+        <h2>Logo Images</h2>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="images/m-logo.png" alt="M Logo">
+                <div class="image-label">m-logo.png</div>
+            </div>
+            <div class="image-container">
+                <img src="images/mrad-wordmark.png" alt="MRAD Wordmark">
+                <div class="image-label">mrad-wordmark.png</div>
+            </div>
+        </div>
+    </div>
+
+    <p>If you can see all images above, then they are loading correctly.</p>
+    <p><a href="index.html">Return to main website</a></p>
+</body>
+</html>
