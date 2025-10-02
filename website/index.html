@@ -1765,16 +1765,115 @@
         }
         
         @media (max-width: 768px) {
+            /* Mobile-specific centering fixes */
+            .container {
+                padding: 0 1rem;
+                text-align: center;
+            }
+            
+            .hero .container {
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+                text-align: center;
+            }
+            
             .section-title {
                 font-size: 2rem;
+                text-align: center;
+                margin: 0 auto 2rem auto;
+            }
+            
+            .bio-container {
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .bio-text {
+                text-align: center;
+            }
+            
+            .bio-signature {
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            /* Gallery mobile centering */
+            .gallery-content {
+                text-align: center;
+            }
+            
+            .gallery-controls {
+                justify-content: center;
+            }
+            
+            .gallery-indicator {
+                justify-content: center;
+            }
+            
+            /* News grid mobile centering */
+            .news-grid {
+                text-align: center;
+            }
+            
+            /* Footer mobile centering */
+            .footer-grid {
+                text-align: center;
+            }
+            
+            .contact-card {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            /* Form mobile centering */
+            .contact-form {
+                text-align: center;
+            }
+            
+            .form-group {
+                text-align: center;
+            }
+            
+            /* Race calendar mobile centering */
+            .race-calendar {
+                text-align: center;
+                margin: 0 auto;
+            }
+            
+            .race-event {
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .view-all-races {
+                display: block;
+                text-align: center;
+                margin: 25px auto 0 auto;
             }
             
             .grid {
                 grid-template-columns: 1fr;
-            }
-            
-            section {
-                padding: 4rem 0;
             }
             
             .social-grid {
@@ -1855,7 +1954,7 @@
     <!-- About Section with modern design -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Driven by Determination</h2>
+            <h2 class="section-title" data-aos="fade-up">The Journey</h2>
             
             <div class="bio-container">
                 <div class="bio-image" data-aos="fade-right" data-aos-delay="200">
