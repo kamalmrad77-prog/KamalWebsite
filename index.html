@@ -127,6 +127,8 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.4s ease;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            box-sizing: border-box;
         }
         
         .navbar.scrolled {
@@ -340,6 +342,7 @@
             max-width: 425px;
             height: auto;
             filter: drop-shadow(0 0 15px rgba(78, 255, 0, 0.6));
+            width: 100%; /* Make it responsive */
         }
         
         .tagline {
@@ -1467,7 +1470,8 @@
         
         .bio-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
         
@@ -1776,6 +1780,20 @@
                 padding: 0 1rem;
             }
             
+            /* Hero logo responsive sizing */
+            .hero-wordmark {
+                max-width: 90vw; /* Use viewport width for better responsiveness */
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+            
+            /* Background1 positioning adjustment for mobile */
+            .hero-bg {
+                background: url('images/background1.jpg') center top/cover !important;
+                background-position: center top !important;
+            }
+            
             .hero-cta {
                 justify-content: center;
                 flex-wrap: wrap;
@@ -1784,7 +1802,22 @@
             
             .nav-container {
                 padding: 0 1rem;
-                justify-content: center;
+                justify-content: flex-start; /* Start with logo on left */
+                align-items: center;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative; /* For hamburger absolute positioning */
+            }
+            
+            .hamburger {
+                display: block;
+                position: fixed;
+                right: 1.5rem;
+                top: 1.2rem;
+                padding: 10px;
+                z-index: 1001;
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 4px;
             }
             
             .section {
@@ -1899,6 +1932,32 @@
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 width: 100%;
                 margin-top: 15px;
+            }
+        }
+        
+        /* Extra small screens - ensure logo visibility on very small phones */
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 0.5rem; /* Reduced padding on very small screens */
+            }
+            
+            .logo img.logo-icon {
+                height: 40px; /* Match the calendar page size */
+                margin-right: 8px;
+                filter: drop-shadow(0 0 10px rgba(78, 255, 0, 1)); /* Strong glow for visibility */
+            }
+            
+            /* Hero wordmark for very small screens */
+            .hero-wordmark {
+                max-width: 95vw; /* Even more constrained on very small screens */
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+            
+            /* Ensure no horizontal overflow */
+            .navbar {
+                overflow-x: visible;
             }
         }
     </style>
