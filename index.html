@@ -2108,7 +2108,7 @@
                         <div class="race-location"><i class="fas fa-map-marker-alt"></i> Melbourne, Victoria</div>
                     </div>
                     <div class="race-countdown">
-                        <span class="days" id="sandown-days">43</span>
+                        <span class="days">41</span>
                         <span class="countdown-label">DAYS</span>
                     </div>
                 </div>
@@ -2390,39 +2390,60 @@
             });
         }
 
-        // Race countdown functionality
+        // Dynamic Race countdown functionality
         function updateRaceCountdowns() {
-            const today = new Date();
+            const now = new Date().getTime();
             
-            // Define race dates
-            const raceDates = {
-                'Monza F4 Championship': new Date('October 15, 2025'),
-                'Silverstone GT3 Cup': new Date('November 5, 2025'),
-                'Abu Dhabi F4 Finals': new Date('December 10, 2025')
-            };
-            
-            // Update each countdown
-            document.querySelectorAll('.race-event').forEach(event => {
-                const raceName = event.querySelector('.race-name').textContent;
+            // Find all upcoming race events
+            document.querySelectorAll('.race-event.upcoming').forEach(event => {
+                const raceDateElement = event.querySelector('.race-date');
                 const daysElement = event.querySelector('.days');
                 
-                if (raceName in raceDates) {
-                    const raceDate = raceDates[raceName];
-                    const timeDiff = raceDate.getTime() - today.getTime();
-                    const daysDiff = Math.max(0, Math.ceil(timeDiff / (1000 * 3600 * 24)));
+                if (raceDateElement && daysElement) {
+                    // Parse the date from the HTML (e.g., "NOV 13-15, 2025" -> "NOV 13, 2025")
+                    let dateText = raceDateElement.textContent.trim();
                     
-                    daysElement.textContent = daysDiff;
+                    // Extract the start date (first date in range)
+                    let startDate;
+                    if (dateText.includes('-')) {
+                        // Handle date ranges like "NOV 13-15, 2025"
+                        const parts = dateText.split('-');
+                        const startDay = parts[0].trim(); // "NOV 13"
+                        const endPart = parts[1].trim(); // "15, 2025"
+                        const year = endPart.split(',')[1].trim(); // "2025"
+                        startDate = new Date(`${startDay}, ${year}`);
+                    } else {
+                        // Handle single dates like "NOV 13, 2025"
+                        startDate = new Date(dateText);
+                    }
                     
-                    // Add visual indicator if race is coming soon (less than 10 days)
-                    if (daysDiff < 10) {
-                        event.classList.add('coming-soon');
+                    // Calculate days until start of event
+                    if (startDate && !isNaN(startDate.getTime())) {
+                        const timeLeft = startDate.getTime() - now;
+                        
+                        if (timeLeft > 0) {
+                            const days = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
+                            daysElement.textContent = days;
+                            
+                            // Add visual indicator if race is coming soon (less than 7 days)
+                            if (days < 7) {
+                                event.classList.add('coming-soon');
+                            } else {
+                                event.classList.remove('coming-soon');
+                            }
+                        } else {
+                            // Race has started - show 0 or mark as current
+                            daysElement.textContent = '0';
+                            event.classList.add('current');
+                        }
                     }
                 }
             });
         }
         
-        // Initialize countdown on page load
+        // Initialize countdown and set up regular updates
         updateRaceCountdowns();
+        setInterval(updateRaceCountdowns, 60000); // Update every minute
         
         // Add click functionality to race events
         document.querySelectorAll('.race-event').forEach(event => {
