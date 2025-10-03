@@ -1,0 +1,18 @@
+# Remove .html extension from URLs
+RewriteEngine On
+
+# Remove .html extension from displayed URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html URLs to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Handle specific redirects for your renamed files
+RewriteRule ^home$ home.html [NC,L]
+RewriteRule ^results$ results.html [NC,L]
+
+# Redirect index to home
+RewriteRule ^index$ /home [R=301,L]
